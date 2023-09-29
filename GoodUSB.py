@@ -1,11 +1,12 @@
 from colorama import Fore, Back, Style
 import packaging
+import requests
 
 version = "0.0.1"
 update_avaliable = "No update"
 
 def check_update():
-    if packaging.version(version):
+    if packaging.version(version) > packaging.version(requests.get("https://raw.githubusercontent.com/tspstudio/GoodUSD/master/version.txt").text):
         update_avaliable == "Avaliable"
 
 def main():
@@ -17,6 +18,8 @@ def main():
 ╚██████╔╝╚██████╔╝╚██████╔╝██████╔╝╚██████╔╝███████║██████╔╝
  ╚═════╝  ╚═════╝  ╚═════╝ ╚═════╝  ╚═════╝ ╚══════╝╚═════╝ 
 """+Fore.WHIRE)
+
+    check_update()
 
     print(f"""
                         --- > Made by tspstudio
